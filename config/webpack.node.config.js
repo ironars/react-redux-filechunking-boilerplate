@@ -9,16 +9,13 @@ module.exports = merge([
     plugins: [
       new CopyWebpackPlugin([
         { from: 'src/assets', to: '../build' }
-      ]),
-      new webpack.DefinePlugin({
-        VERSION: JSON.stringify("1.0.0")
-      })
+      ])
     ],
     output: {
-      filename: '[name].[chunkhash].bundle.js',
-      chunkFilename: '[name].[chunkhash].bundle.js',
+      filename: '[name].bundle.js',
+      chunkFilename: '[name].bundle.js',
       path: path.resolve(__dirname, '..', 'build'),
-      // publicPath: '/'
+      publicPath: '/'
     },
   }
 ]);
