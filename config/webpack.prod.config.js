@@ -7,6 +7,7 @@ var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var Visualizer = require('webpack-visualizer-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var baseConfig = require('./webpack.base.config');
 var nodeConfig = require('./webpack.node.config');
@@ -42,14 +43,25 @@ const prodConfiguration = function (version, platform) {
         new webpack.DefinePlugin({ 'process.env.VERSION': JSON.stringify(version) }),
         new webpack.DefinePlugin({ 'process.env.PLATFORM': JSON.stringify(platform) }),
         new OptimizeCssAssetsPlugin(),
-        // new Visualizer({ filename: './statistics.html' })
-      ],
+        // new Visualizer({ filename: './statistics.html' }
+        new CopyWebpackPlugin([
+          { from: 'src/assets', to: '../build' }
+        ]),
+        new webpack.DefinePlugin({
+          VERSION: JSON.stringify("1.0.0")
+        })],
+      output: {
+        filename: '[name].[chunkhash].bundle.js',
+        chunkFilename: '[name].[chunkhash].bundle.js',
+        path: path.resolve(__dirname, '..', 'build'),
+        publicPath: '/',
+      },
     },
   ]);
 }
 
 module.exports = function (env) {
-  return merge(baseConfig, nodeConfig, prodConfiguration(env.VERSION, env.PLATFORM))
+  return merge(baseConfig, prodConfiguration(env.VERSION, env.PLATFORM))
 }
 
 

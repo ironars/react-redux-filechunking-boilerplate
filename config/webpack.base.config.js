@@ -1,7 +1,6 @@
 var path = require('path');
 const merge = require("webpack-merge");
 
-//var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WebpackMd5Hash = require('webpack-md5-hash');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -22,7 +21,7 @@ module.exports = merge([
         },
         {
           test: /\.scss$/,
-          use:  [  'style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+          use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
         }
       ]
     },
