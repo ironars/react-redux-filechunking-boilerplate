@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://arsalanansari@bitbucket.org/coqonut/tax-portal.git"
+    "url": "git+https://github.com/ironars/react-redux-filechunking-boilerplate.git"
   },
   "author": "Arsalan Ahmed Ansari",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/coqonut/tax-portal#readme",
+  "homepage": "https://github.com/ironars/react-redux-filechunking-boilerplate#readme",
   "dependencies": {
     "@material-ui/core": "^1.1.0",
     "@material-ui/icons": "^1.1.0",
